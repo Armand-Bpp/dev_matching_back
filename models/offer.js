@@ -47,6 +47,6 @@ let schema = new mongoose.Schema({
 
 });
 
-var model = mongoose.model("offers", schema);
+var model = mongoose.model("offer", schema);
 
 module.exports = model;
