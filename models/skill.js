@@ -50,6 +50,6 @@ let schema = new mongoose.Schema({
     
 })
 
-var model = mongoose.model('Skill', schema);
+var model = mongoose.model('skill', schema);
 
 module.exports = model;
