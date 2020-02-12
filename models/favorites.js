@@ -16,7 +16,10 @@ let schema = new mongoose.Schema({
             ref: "user"
         },
     },
-    typeId: String
+    typeId: {
+        type: String,
+        enum:["user", "offer"]
+    }
 
 
 });
