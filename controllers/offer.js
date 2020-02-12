@@ -19,7 +19,8 @@ router.post('/', function (req, res) {
         city: req.body.city || '',
         region: req.body.region || '',
         experience: req.body.experience || 1,
-        descritpion: req.body.descritpion || ''
+        descritpion: req.body.descritpion || '',
+        created: req.body.created || '',
     });
     offer.save(function (err, offerDb) {
         if (err !== null) {
