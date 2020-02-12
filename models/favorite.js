@@ -19,8 +19,12 @@ let schema = new mongoose.Schema({
     typeId: {
         type: String,
         enum:["user", "offer"]
-    }
+    },
 
+    created: {
+        type : Date,
+        default :Date.now
+    }
 
 });
 

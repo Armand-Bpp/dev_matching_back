@@ -111,6 +111,7 @@ router.get('/:id', function (req, res) {
     });
 });
 
+
 // UPDATE
 router.put('/:id', function (req, res) {
     console.log('PUT /users/:id');
@@ -146,6 +147,7 @@ router.put('/:id', function (req, res) {
         }
     );
 });
+
 
 // DELETE
 router.delete('/:id', function (req, res) {

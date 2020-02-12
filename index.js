@@ -2,13 +2,12 @@ var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
-// var models = require('./models');
-// var UserModel = models.user;
-// var OfferModel = models.offer;
 
 var controllers = require('./controllers');
 var UserController = controllers.user;
 var OfferController = controllers.offer;
+var SkillController = controllers.skill;
+var UserSkillController = controllers.userSkill;
 
 
 mongoose.connect(
@@ -39,6 +38,8 @@ app.use(bodyParser.json());
 
 app.use('/user', UserController);
 app.use('/offer', OfferController);
+app.use('/skill', SkillController);
+app.use('/userSkill', UserSkillController);
 
 app.use('*', function (req, res) {
     res.json({
