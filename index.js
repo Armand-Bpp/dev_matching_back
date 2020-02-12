@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 var controllers = require('./controllers');
 var UserController = controllers.user;
 var OfferController = controllers.offer;
+var FavoriteController = controllers.favorite
 
 
 mongoose.connect(
@@ -39,6 +40,7 @@ app.use(bodyParser.json());
 
 app.use('/user', UserController);
 app.use('/offer', OfferController);
+app.use('/favorite', FavoriteController)
 
 app.use('*', function (req, res) {
     res.json({
