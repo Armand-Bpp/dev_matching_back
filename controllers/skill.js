@@ -14,7 +14,7 @@ router.post('/', function (req, res) {
         name: req.body.name || '',
         created: req.body.created || ''
     });
-    user.save(function (err, skillDb) {
+    skill.save(function (err, skillDb) {
         if (err !== null) {
             console.log('skill save err', err);
             res.json({

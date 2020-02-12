@@ -10,7 +10,7 @@ router.post('/', function (req, res) {
     console.log('POST /offers req.query', req.query);
     console.log('POST /offers req.params', req.params);
 
-    var offer = new OffersModel({
+    var offer = new offerModel({
         position: req.body.poste || '',
         address: req.body.address || '',
         contract: req.body.contract || '',

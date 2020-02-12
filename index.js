@@ -48,7 +48,7 @@ app.use('*', function (req, res) {
         success: false,
         title: 'Dev matching basics API',
         message: 'Route not found'
-    });
+    })
 });
 
 app.listen(port, function () {
