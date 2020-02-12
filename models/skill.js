@@ -41,7 +41,12 @@ let schema = new mongoose.Schema({
         "MongoDB",
         "Cassandra",
         "CouchDB",
-        "Mamcached"]
+        "Mamcached"],
+
+    created: {
+        type : Date,
+        default :Date.now
+    }
     
 })
 

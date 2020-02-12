@@ -40,6 +40,11 @@ let schema = new mongoose.Schema({
         type: String
     },
 
+    created: {
+        type : Date,
+        default :Date.now
+    }
+
 });
 
 var model = mongoose.model("offers", schema);

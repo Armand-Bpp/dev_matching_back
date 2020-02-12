@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 let schema = new mongoose.Schema({
     
     role: {
-        type : ['dev', 'ent'],
+        type : String,
         index : true
     },
 
@@ -22,10 +22,10 @@ let schema = new mongoose.Schema({
 
     password: String,
 
-    phoneNumber: Number,
+    phoneNumber: String,
 
     experience: {
-        type: String,
+        type: Number,
         index: true
     },
 
@@ -34,23 +34,36 @@ let schema = new mongoose.Schema({
         index: true
     },
 
-    postalCode: Number,
+    postalCode: String,
 
     contract: {
         type: String,
         index: true
     },
 
-    siret: Number,
+    siret: String,
 
-    associationNumber: Number,
+    associationNumber: String,
+
+    skills : {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "user_skills",
+        index: true
+    },
 
     bio: String,
+
+    github: String,
+
+    linkedin: String,
+
+    cv: String,
     
-    cursus: {
-        type: String,
-        index: true
+    created: {
+        type : Date,
+        default :Date.now
     }
+   
 })
 
 var model = mongoose.model('User', schema);

@@ -18,15 +18,19 @@ router.post('/', function (req, res) {
         picture: req.body.picture || '',
         companyName: req.body.companyName || '',
         password: req.body.password || '',
-        phoneNumber: req.body.phoneNumber || 1,
+        phoneNumber: req.body.phoneNumber || '',
         experience: req.body.experience || 1,
         city: req.body.city || '',
-        postalCode: req.body.postalCode || 1,
+        postalCode: req.body.postalCode || '',
         contract: req.body.contract || '',
-        siret: req.body.siret || 1,
-        associationNumber: req.body.associationNumber || 1,
-        bio: req.body.bio || 1,
-        cursus: req.body.cursus || ''
+        siret: req.body.siret || '',
+        associationNumber: req.body.associationNumber || '',
+        skills: req.body.skills || '',
+        bio: req.body.bio || '',
+        github: req.body.github || '',
+        linkedin: req.body.linkedin || '',
+        cv: req.body.cv || '',
+        created: req.body.created || '',
     });
     user.save(function (err, userDb) {
         if (err !== null) {
