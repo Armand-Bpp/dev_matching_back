@@ -4,5 +4,7 @@ module.exports = {
     offer: require('./offer'),
     favorite: require('./favorite'),
     // usersSkil: require('./usersSkil')
+    userSkill: require('./userSkill')
+    // favorite: require('./favorite')
 };
 

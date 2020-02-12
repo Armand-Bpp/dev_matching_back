@@ -1,22 +1,22 @@
 var express = require('express');
 var router = express.Router(); // same as those 2 lines: var router = require('express').Router();
 
-var skillModel = require('../models').skill;
+var userskillModel = require('../models').userskill;
 
 // CREATE
 router.post('/', function (req, res) {
-    console.log('POST /skills');
-    console.log('POST /skills req.body', req.body);
-    console.log('POST /skills req.query', req.query);
-    console.log('POST /skills req.params', req.params);
+    console.log('POST /userskills');
+    console.log('POST /userskills req.body', req.body);
+    console.log('POST /userskills req.query', req.query);
+    console.log('POST /userskills req.params', req.params);
 
-    var skill = new skillModel({
-        name: req.body.name || '',
+    var userskill = new userskillsModel({
+        category: req.body.category || '',
         created: req.body.created || ''
     });
-    user.save(function (err, skillDb) {
+    userskill.save(function (err, userskillDb) {
         if (err !== null) {
-            console.log('skill save err', err);
+            console.log('userskill save err', err);
             res.json({
                 success: false,
                 message: err.toString()
@@ -25,7 +25,7 @@ router.post('/', function (req, res) {
         }
         res.json({
             success: true,
-            data: skillDb
+            data: userskillDb
         });
     });
 });
@@ -33,10 +33,10 @@ router.post('/', function (req, res) {
 
 // READ
 router.get('/', function (req, res) {
-    console.log('GET /skills');
-    console.log('GET /skills req.body', req.body);
-    console.log('GET /skills req.query', req.query);
-    console.log('GET /skills req.params', req.params);
+    console.log('GET /userskills');
+    console.log('GET /userskills req.body', req.body);
+    console.log('GET /userskills req.query', req.query);
+    console.log('GET /userskills req.params', req.params);
 
     var limit = parseInt(req.query.limit);
     if (isNaN(limit) === true) {
@@ -46,14 +46,14 @@ router.get('/', function (req, res) {
         limit = 20;
     }
 
-    console.log('GET /skills limit', limit);
+    console.log('GET /userskills limit', limit);
 
-    skillModel
+    userskillModel
         .find({})
         .limit(limit)
-        .exec(function (err, skills) {
-            console.log('GET /skills err', err);
-            console.log('GET /skills', skills);
+        .exec(function (err, userskills) {
+            console.log('GET /userskills err', err);
+            console.log('GET /userskills userskills', userskills);
             if (err !== null) {
                 console.log('Error db find err:', err);
                 res.json({
@@ -64,20 +64,20 @@ router.get('/', function (req, res) {
             }
             res.json({
                 success: true,
-                data: skills
+                data: userskills
             });
         });
 });
 
 router.get('/:id', function (req, res) {
-    console.log('GET /skills/:id');
-    console.log('GET /skills/:id req.body', req.body);
-    console.log('GET /skills/:id req.query', req.query);
-    console.log('GET /skills/:id req.params', req.params);
+    console.log('GET /userskills/:id');
+    console.log('GET /userskills/:id req.body', req.body);
+    console.log('GET /userskills/:id req.query', req.query);
+    console.log('GET /userskills/:id req.params', req.params);
 
-    skillModel.findById(req.params.id, function (err, offer) {
-        console.log('GET /skills/:id err', err);
-        console.log('GET /skills/:id offers', offer);
+    userskillModel.findById(req.params.id, function (err, userskill) {
+        console.log('GET /userskills/:id err', err);
+        console.log('GET /userskills/:id userskills', userskill);
         if (err !== null) {
             console.log('Error db find err:', err);
             res.json({
@@ -88,18 +88,17 @@ router.get('/:id', function (req, res) {
         }
         res.json({
             success: true,
-            data: skill
+            data: userskill
         });
     });
 });
 
-
 // UPDATE
 router.put('/:id', function (req, res) {
-    console.log('PUT /skills/:id');
-    console.log('PUT /skills/:id req.body', req.body);
-    console.log('PUT /skills/:id req.query', req.query);
-    console.log('PUT /skills/:id req.params', req.params);
+    console.log('PUT /userskills/:id');
+    console.log('PUT /userskills/:id req.body', req.body);
+    console.log('PUT /userskills/:id req.query', req.query);
+    console.log('PUT /userskills/:id req.params', req.params);
 
     var name = req.query.name || '';
     if (name.length === 0) {
@@ -110,12 +109,12 @@ router.put('/:id', function (req, res) {
         return;
     }
 
-    skillModel.updateOne(
+    userskillModel.updateOne(
         { _id: req.params.id }, // query
         { name: name }, // document
         function (err, result) {
             if (err !== null) {
-                console.log('PUT /skills/:id Update error err', err);
+                console.log('PUT /userskills/:id Update error err', err);
                 res.json({
                     success: false,
                     message: err.toString()
@@ -130,18 +129,16 @@ router.put('/:id', function (req, res) {
     );
 });
 
-
-
 // DELETE
 router.delete('/:id', function (req, res) {
-    console.log('DELETE /skills/:id');
-    console.log('DELETE /skills/:id req.body', req.body);
-    console.log('DELETE /skills/:id req.query', req.query);
-    console.log('DELETE /skills/:id req.params', req.params);
+    console.log('DELETE /userskills/:id');
+    console.log('DELETE /userskills/:id req.body', req.body);
+    console.log('DELETE /userskills/:id req.query', req.query);
+    console.log('DELETE /userskills/:id req.params', req.params);
 
-    skillModel.deleteOne({ _id: req.params.id }, function (err, result) {
+    userskillModel.deleteOne({ _id: req.params.id }, function (err, result) {
         if (err !== null) {
-            console.log('DELETE /skills/:id delete error err', err);
+            console.log('DELETE /userskills/:id delete error err', err);
             res.json({
                 success: false,
                 message: err.toString()
