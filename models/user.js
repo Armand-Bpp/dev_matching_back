@@ -4,6 +4,7 @@ let schema = new mongoose.Schema({
     
     role: {
         type : String,
+        enum : ["developer", "company"],
         index : true
     },
 
@@ -47,7 +48,7 @@ let schema = new mongoose.Schema({
 
     skills : {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "user_skills",
+        ref: "userSkills",
         index: true
     },
 

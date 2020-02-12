@@ -1,7 +1,10 @@
 var mongoose = require('mongoose');
 
 let schema = new mongoose.Schema({
-    name: ["HTML",
+    name: {
+       type : String,
+
+       enum :  ["HTML",
         "CSS",
         "Sass",
         "Compass",
@@ -43,6 +46,9 @@ let schema = new mongoose.Schema({
         "CouchDB",
         "Mamcached"],
 
+        index : true
+    },
+
     created: {
         type : Date,
         default :Date.now
@@ -50,6 +56,6 @@ let schema = new mongoose.Schema({
     
 })
 
-var model = mongoose.model('Skill', schema);
+var model = mongoose.model('skill', schema);
 
 module.exports = model;

@@ -2,7 +2,8 @@ var mongoose = require('mongoose');
 
 let schema = new mongoose.Schema({
     category: {
-        type: [ "mobile", "front","back","tools"],
+        type: String,
+        enum : [ "mobile", "front","back","tools"],
         index : true
     },
 

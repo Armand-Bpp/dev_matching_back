@@ -12,7 +12,9 @@ let schema = new mongoose.Schema({
     },
 
     contract: {
-      type : ["CDD", "CDI", "Stage", "Freelance"]
+      type : String,
+      enum : ["CDD", "CDI", "Stage", "Freelance"],
+      index : true
     },
 
     duration: {

@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var controllers = require('./controllers');
 var UserController = controllers.user;
 var OfferController = controllers.offer;
-var FavoriteController = controllers.favorite
+var FavoriteController = controllers.favorite;
 var SkillController = controllers.skill;
 var UserSkillController = controllers.userSkill;
 
@@ -37,11 +37,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-app.use('/user', UserController);
-app.use('/offer', OfferController);
-app.use('/favorite', FavoriteController)
-app.use('/skill', SkillController);
-app.use('/userSkill', UserSkillController);
+app.use('/users', UserController);
+app.use('/offers', OfferController);
+app.use('/favorites', FavoriteController)
+app.use('/skills', SkillController);
+app.use('/userSkills', UserSkillController);
 
 app.use('*', function (req, res) {
     res.json({
