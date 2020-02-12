@@ -6,12 +6,9 @@ var bodyParser = require('body-parser');
 var controllers = require('./controllers');
 var UserController = controllers.user;
 var OfferController = controllers.offer;
-<<<<<<< HEAD
 var FavoriteController = controllers.favorite
-=======
 var SkillController = controllers.skill;
 var UserSkillController = controllers.userSkill;
->>>>>>> 993992b51343f4fd324853dca8a7d5b443e57654
 
 
 mongoose.connect(
@@ -42,12 +39,9 @@ app.use(bodyParser.json());
 
 app.use('/user', UserController);
 app.use('/offer', OfferController);
-<<<<<<< HEAD
 app.use('/favorite', FavoriteController)
-=======
 app.use('/skill', SkillController);
 app.use('/userSkill', UserSkillController);
->>>>>>> 993992b51343f4fd324853dca8a7d5b443e57654
 
 app.use('*', function (req, res) {
     res.json({

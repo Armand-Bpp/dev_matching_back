@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 let schema = new mongoose.Schema({
     category: {
-        type: ["back", "front", "mobile", "tools"],
+        type: [ "mobile", "front","back","tools"],
         index : true
     },
 
