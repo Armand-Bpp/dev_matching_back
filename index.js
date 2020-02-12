@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var controllers = require('./controllers');
 var UserController = controllers.user;
 var OfferController = controllers.offer;
-var FavoriteController = controllers.favorite
+var FavoriteController = controllers.favorite;
 var SkillController = controllers.skill;
 var UserSkillController = controllers.userSkill;
 

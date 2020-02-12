@@ -4,6 +4,7 @@ let schema = new mongoose.Schema({
     
     role: {
         type : String,
+        enum : ["developer", "company"],
         index : true
     },
 
@@ -45,11 +46,19 @@ let schema = new mongoose.Schema({
 
     associationNumber: String,
 
+<<<<<<< HEAD
+    skills : {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "userSkills",
+        index: true
+    },
+=======
     // skills : {
     //     type: mongoose.Schema.Types.ObjectId,
     //     ref: "userSkills",
     //     index: true
     // },
+>>>>>>> 0ac0e0dfa7143001570204828d5f9aac12daa24e
 
     bio: String,
 

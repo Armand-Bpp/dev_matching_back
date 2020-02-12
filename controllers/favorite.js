@@ -5,10 +5,10 @@ var favoriteModel = require('../models').favorite;
 
 // CREATE
 router.post('/', function (req, res) {
-    console.log('POST /users');
-    console.log('POST /users req.body', req.body);
-    console.log('POST /users req.query', req.query);
-    console.log('POST /users req.params', req.params);
+    console.log('POST /favorites');
+    console.log('POST /favorites req.body', req.body);
+    console.log('POST /favorites req.query', req.query);
+    console.log('POST /favorites req.params', req.params);
 
     var favorite = new favoriteModel({
         userId: req.body.userId || '',
@@ -71,14 +71,14 @@ router.get('/', function (req, res) {
 });
 
 router.get('/:id', function (req, res) {
-    console.log('GET /skills/:id');
-    console.log('GET /skills/:id req.body', req.body);
-    console.log('GET /skills/:id req.query', req.query);
-    console.log('GET /skills/:id req.params', req.params);
+    console.log('GET /favorites/:id');
+    console.log('GET /favorites/:id req.body', req.body);
+    console.log('GET /favorites/:id req.query', req.query);
+    console.log('GET /favorites/:id req.params', req.params);
 
-    favoriteModel.findById(req.params.id, function (err, offer) {
-        console.log('GET /skills/:id err', err);
-        console.log('GET /skills/:id offers', offer);
+    favoriteModel.findById(req.params.id, function (err, favorite) {
+        console.log('GET /favorites/:id err', err);
+        console.log('GET /favorites/:id offers', favorite);
         if (err !== null) {
             console.log('Error db find err:', err);
             res.json({
@@ -97,10 +97,10 @@ router.get('/:id', function (req, res) {
 
 // UPDATE
 router.put('/:id', function (req, res) {
-    console.log('PUT /skills/:id');
-    console.log('PUT /skills/:id req.body', req.body);
-    console.log('PUT /skills/:id req.query', req.query);
-    console.log('PUT /skills/:id req.params', req.params);
+    console.log('PUT /favorites/:id');
+    console.log('PUT /favorites/:id req.body', req.body);
+    console.log('PUT /favorites/:id req.query', req.query);
+    console.log('PUT /favorites/:id req.params', req.params);
 
     var name = req.query.name || '';
     if (name.length === 0) {
@@ -116,7 +116,7 @@ router.put('/:id', function (req, res) {
         { name: name }, // document
         function (err, result) {
             if (err !== null) {
-                console.log('PUT /skills/:id Update error err', err);
+                console.log('PUT /favorites/:id Update error err', err);
                 res.json({
                     success: false,
                     message: err.toString()
@@ -135,14 +135,14 @@ router.put('/:id', function (req, res) {
 
 // DELETE
 router.delete('/:id', function (req, res) {
-    console.log('DELETE /skills/:id');
-    console.log('DELETE /skills/:id req.body', req.body);
-    console.log('DELETE /skills/:id req.query', req.query);
-    console.log('DELETE /skills/:id req.params', req.params);
+    console.log('DELETE /favorites/:id');
+    console.log('DELETE /favorites/:id req.body', req.body);
+    console.log('DELETE /favorites/:id req.query', req.query);
+    console.log('DELETE /favorites/:id req.params', req.params);
 
     favoriteModel.deleteOne({ _id: req.params.id }, function (err, result) {
         if (err !== null) {
-            console.log('DELETE /skills/:id delete error err', err);
+            console.log('DELETE /favorites/:id delete error err', err);
             res.json({
                 success: false,
                 message: err.toString()

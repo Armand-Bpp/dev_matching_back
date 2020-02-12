@@ -1,7 +1,10 @@
 var mongoose = require('mongoose');
 
 let schema = new mongoose.Schema({
-    name: ["HTML",
+    name: {
+       type : String,
+
+       enum :  ["HTML",
         "CSS",
         "Sass",
         "Compass",
@@ -42,6 +45,9 @@ let schema = new mongoose.Schema({
         "Cassandra",
         "CouchDB",
         "Mamcached"],
+
+        index : true
+    },
 
     created: {
         type : Date,
