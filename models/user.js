@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 let schema = new mongoose.Schema({
-
+    
     role: {
         type : String,
         index : true
@@ -45,11 +45,11 @@ let schema = new mongoose.Schema({
 
     associationNumber: String,
 
-    skills : {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "user_skills",
-        index: true
-    },
+    // skills : {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: "userSkills",
+    //     index: true
+    // },
 
     bio: String,
 
@@ -58,12 +58,12 @@ let schema = new mongoose.Schema({
     linkedin: String,
 
     cv: String,
-
+    
     created: {
         type : Date,
         default :Date.now
     }
-
+   
 })
 
 var model = mongoose.model('User', schema);

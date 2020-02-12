@@ -37,15 +37,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-app.use('/user', UserController);
-app.use('/offer', OfferController);
-app.use('/skill', SkillController);
+app.use('/users', UserController);
+app.use('/offers', OfferController);
+app.use('/favorites', FavoriteController)
+app.use('/skills', SkillController);
+app.use('/userSkills', UserSkillController);
 
 app.use('*', function (req, res) {
+    res.json({
         success: false,
         title: 'Dev matching basics API',
         message: 'Route not found'
-    });
+    })
 });
 
 app.listen(port, function () {

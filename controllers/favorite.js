@@ -15,7 +15,7 @@ router.post('/', function (req, res) {
         data: req.body.data || '',
         typeId: req.body.typeId || ''
     });
-    user.save(function (err, favoriteDb) {
+    favorite.save(function (err, favoriteDb) {
         if (err !== null) {
             console.log('favorite save err', err);
             res.json({
