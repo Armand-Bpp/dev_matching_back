@@ -11,7 +11,7 @@ let schema = new mongoose.Schema({
         type: String
     },
 
-    contracts: {
+    contract: {
       type : ["CDD", "CDI", "Stage", "Freelance"]
     },
 

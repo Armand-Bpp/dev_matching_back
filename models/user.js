@@ -1,22 +1,56 @@
 var mongoose = require('mongoose');
 
 let schema = new mongoose.Schema({
-    role: ['dev', 'ent'],
+    
+    role: {
+        type : ['dev', 'ent'],
+        index : true
+    },
+
     firstName: String,
+
     lastName: String,
+
     email: String,
+
     picture: String,
-    companyName: String,
+
+    companyName: {
+        type: String,
+        index: true
+    },
+
     password: String,
+
     phoneNumber: Number,
-    experience: Number,
-    city: String,
+
+    experience: {
+        type: String,
+        index: true
+    },
+
+    city: {
+        type: String,
+        index: true
+    },
+
     postalCode: Number,
-    contract: String,
+
+    contract: {
+        type: String,
+        index: true
+    },
+
     siret: Number,
+
     associationNumber: Number,
+
     bio: String,
-    cursus: String
+    
+    cursus: {
+        type: String,
+        index: true
+    }
 })
 
 var model = mongoose.model('User', schema);
