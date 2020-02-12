@@ -75,7 +75,7 @@ router.get('/:id', function (req, res) {
     console.log('GET /skills/:id req.query', req.query);
     console.log('GET /skills/:id req.params', req.params);
 
-    skillModel.findById(req.params.id, function (err, offer) {
+    skillModel.findById(req.params.id, function (err, skill) {
         console.log('GET /skills/:id err', err);
         console.log('GET /skills/:id offers', offer);
         if (err !== null) {
