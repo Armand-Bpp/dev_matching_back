@@ -12,8 +12,9 @@ router.post('/', function (req, res) {
 
     var skill = new skillModel({
         name: req.body.name || '',
-        created: req.body.created || ''
-    });
+        parentId : req.body.parentId 
+      });
+      
     skill.save(function (err, skillDb) {
         if (err !== null) {
             console.log('skill save err', err);
@@ -53,7 +54,7 @@ router.get('/', function (req, res) {
         .limit(limit)
         .exec(function (err, skills) {
             console.log('GET /skills err', err);
-            console.log('GET /skills', skills);
+            console.log('GET /skillssssss', skills);
             if (err !== null) {
                 console.log('Error db find err:', err);
                 res.json({

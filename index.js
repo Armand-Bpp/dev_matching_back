@@ -39,7 +39,7 @@ app.use(bodyParser.json());
 
 app.use('/users', UserController);
 app.use('/offers', OfferController);
-app.use('/favorites', FavoriteController)
+app.use('/favorites', FavoriteController);
 app.use('/skills', SkillController);
 app.use('/userSkills', UserSkillController);
 

@@ -10,12 +10,22 @@ router.post('/', function (req, res) {
     console.log('POST /favorites req.query', req.query);
     console.log('POST /favorites req.params', req.params);
 
-    var favorite = new favoriteModel({
-        userId: req.body.userId || '',
-        data: req.body.data || '',
-        typeId: req.body.typeId || ''
-    });
-    favorite.save(function (err, favoriteDb) {
+    const query = {
+        userId: req.body.userId,
+        typeId: req.body.type,
+        data: {}
+    }
+
+    if (query.typeId === "user"){
+        query.data.devId = req.body.devId
+
+    } else if (query.typeId === "offer"){
+        query.data.offerId = req.body.offerId
+    }
+
+
+    var favorite = new favoriteModel(query);
+    favorite.save(function (err, favoritedb) {
         if (err !== null) {
             console.log('favorite save err', err);
             res.json({
@@ -26,7 +36,7 @@ router.post('/', function (req, res) {
         }
         res.json({
             success: true,
-            data: favoriteDb
+            data: favoritedb
         });
     });
 });
@@ -54,7 +64,7 @@ router.get('/', function (req, res) {
         .limit(limit)
         .exec(function (err, favorites) {
             console.log('GET /favorite err', err);
-            console.log('GET /favorite', favorites);
+            console.log('GET /favoritesssss', favorites);
             if (err !== null) {
                 console.log('Error db find err:', err);
                 res.json({
@@ -76,7 +86,7 @@ router.get('/:id', function (req, res) {
     console.log('GET /favorites/:id req.query', req.query);
     console.log('GET /favorites/:id req.params', req.params);
 
-    favoriteModel.findById(req.params.id, function (err, favorite) {
+    favoriteModel.findById(req.params.id, function (err, favorites) {
         console.log('GET /favorites/:id err', err);
         console.log('GET /favorites/:id offers', favorite);
         if (err !== null) {
@@ -89,7 +99,7 @@ router.get('/:id', function (req, res) {
         }
         res.json({
             success: true,
-            data: favorite
+            data: favorites
         });
     });
 });
@@ -113,7 +123,9 @@ router.put('/:id', function (req, res) {
 
     favoriteModel.updateOne(
         { _id: req.params.id }, // query
-        { name: name }, // document
+        { data: data }, // document
+        { userId: userId }, // document
+
         function (err, result) {
             if (err !== null) {
                 console.log('PUT /favorites/:id Update error err', err);
