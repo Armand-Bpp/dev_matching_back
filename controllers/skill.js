@@ -14,7 +14,7 @@ router.post('/', function (req, res) {
         name: req.body.name || '',
         parentId : req.body.parentId 
       });
-      
+
     skill.save(function (err, skillDb) {
         if (err !== null) {
             console.log('skill save err', err);
@@ -69,6 +69,69 @@ router.get('/', function (req, res) {
             });
         });
 });
+
+router.get('/parents/', function(req, res){
+    skillModel
+        .find({parentId: req.params.parentId})
+        .exec(function (err, skills){
+            if (err !== null){
+                console.log(err);
+                res.json({
+                    success:false,
+                    message: err.toString()
+                });
+                return;
+            }
+            res.json({
+                success: true,
+                data: skills
+            })
+        })
+});
+router.get('/parents/:id', function(req, res){
+    skillModel
+        .find({parentId: req.params.id})
+        .exec(function (err, skills){
+            if (err !== null){
+                console.log(err);
+                res.json({
+                    success:false,
+                    message: err.toString()
+                });
+                return;
+            }
+            res.json({
+                success: true,
+                data: skills
+            })
+        })
+})
+
+router.get('/children/:id', function(req,res){
+
+console.log(req.query, req.params)
+
+    skillModel
+        .find({parentId: req.params.id})
+        // .limit(limit)
+        .exec(function (err, skills) {
+            console.log('GET /skills err', err);
+            console.log('GET /skillssssss', skills);
+            if (err !== null) {
+                console.log('Error db find err:', err);
+                res.json({
+                    success: false,
+                    message: err.toString()
+                });
+                return;
+            }
+            res.json({
+                success: true,
+                data: skills
+            });
+        });
+
+})
 
 router.get('/:id', function (req, res) {
     console.log('GET /skills/:id');
