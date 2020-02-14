@@ -11,16 +11,17 @@ router.post('/', function (req, res) {
     console.log('POST /offers req.params', req.params);
 
     var offer = new offerModel({
-        position: req.body.poste || '',
+        position: req.body.position || '',
         address: req.body.address || '',
         contract: req.body.contract || '',
         duration: req.body.duration || '',
         title: req.body.title || '',
         city: req.body.city || '',
         region: req.body.region || '',
-        experience: req.body.experience || 1,
-        descritpion: req.body.descritpion || '',
+        experience: req.body.experience || '',
+        description: req.body.description || '',
         created: req.body.created || '',
+        companyName: req.body.companyName || '',
     });
     offer.save(function (err, offerDb) {
         if (err !== null) {

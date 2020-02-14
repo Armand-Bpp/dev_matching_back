@@ -4,43 +4,30 @@ let schema = new mongoose.Schema({
 
     position: {
         type: String,
-        index: true
+        // enum : ["Développeur application mobile", "Développeur Front", "Dev back", "Dev fullstack"],
+        // index: true
     },
+    companyName: String,
 
-    address: {
-        type: String
-    },
+    address: String,
 
     contract: {
       type : String,
-      enum : ["CDD", "CDI", "Stage", "Freelance"],
-      index : true
+    //   enum : ["CDD", "CDI", "Stage", "Freelance"],
+    //   index : true
     },
 
-    duration: {
-        type: String
-    },
+    duration: String,
 
-    title: {
-        type: String,
-        index: true
-    },
+    title: String,
 
-    city: {
-        type: String
-    },
+    city: String,
 
-    region: {
-        type: String
-    },
+    region: String,
 
-    experience: {
-        type: Number
-    },
+    experience: Number,
 
-    descritpion: {
-        type: String
-    },
+    description: String,
 
     created: {
         type : Date,

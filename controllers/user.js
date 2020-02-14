@@ -30,6 +30,7 @@ router.post('/', function (req, res) {
         github: req.body.github || '',
         linkedin: req.body.linkedin || '',
         cv: req.body.cv || '',
+        position: req.body.position || '',
         created: req.body.created || '',
     });
     user.save(function (err, userDb) {

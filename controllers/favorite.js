@@ -12,8 +12,10 @@ router.post('/', function (req, res) {
 
     const query = {
         userId: req.body.userId,
-        typeId: req.body.type,
-        data: {}
+        typeId: req.body.typeId,
+        offerId: req.body.offerId,
+        devId: req.body.devId,
+        data: req.body.data
     }
 
     if (query.typeId === "user"){
@@ -64,7 +66,7 @@ router.get('/', function (req, res) {
         .limit(limit)
         .exec(function (err, favorites) {
             console.log('GET /favorite err', err);
-            console.log('GET /favoritesssss', favorites);
+            console.log('GET /favorites', favorites);
             if (err !== null) {
                 console.log('Error db find err:', err);
                 res.json({

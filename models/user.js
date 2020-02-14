@@ -5,7 +5,7 @@ let schema = new mongoose.Schema({
     role: {
         type : String,
         enum : ["developer", "company"],
-        index : true,
+        // index : true,
         required: true
     },
 
@@ -17,24 +17,17 @@ let schema = new mongoose.Schema({
 
     picture: String,
 
-    companyName: {
-        type: String,
-        index: true
-    },
+    companyName: String,
 
     password: String,
 
     phoneNumber: String,
 
-    experience: {
-        type: Number,
-        index: true
-    },
+    experience: Number,
 
-    city: {
-        type: String,
-        index: true
-    },
+    city: String,
+
+    position: String,
 
     postalCode: String,
 
@@ -68,6 +61,6 @@ let schema = new mongoose.Schema({
    
 })
 
-var model = mongoose.model('User', schema);
+var model = mongoose.model('user', schema);
 
 module.exports = model;
