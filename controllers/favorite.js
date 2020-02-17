@@ -82,7 +82,7 @@ router.get('/', function (req, res) {
         });
 });
 
-router.get('/:id', function (req, res) {
+router.get('/users/:id', function (req, res) {
     console.log('GET /favorites/:id');
     console.log('GET /favorites/:id req.body', req.body);
     console.log('GET /favorites/:id req.query', req.query);
@@ -90,7 +90,7 @@ router.get('/:id', function (req, res) {
 
     favoriteModel.findById(req.params.id, function (err, favorites) {
         console.log('GET /favorites/:id err', err);
-        console.log('GET /favorites/:id offers', favorite);
+        console.log('GET /favorites/:id offers', favorites);
         if (err !== null) {
             console.log('Error db find err:', err);
             res.json({
@@ -107,8 +107,10 @@ router.get('/:id', function (req, res) {
 });
 
 
+
+
 // UPDATE
-router.put('/:id', function (req, res) {
+router.put('/users/:id', function (req, res) {
     console.log('PUT /favorites/:id');
     console.log('PUT /favorites/:id req.body', req.body);
     console.log('PUT /favorites/:id req.query', req.query);
