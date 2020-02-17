@@ -40,11 +40,11 @@ let schema = new mongoose.Schema({
 
     associationNumber: String,
 
-    // skills : {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: "userSkills",
-    //     index: true
-    // },
+    skills : [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "skill",
+        index: true
+    }],
 
     bio: String,
 

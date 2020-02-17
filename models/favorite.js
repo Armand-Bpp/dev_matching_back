@@ -4,10 +4,10 @@ let schema = new mongoose.Schema({
 
     // body: { type: String, required: true },
 
-    // userId: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: "user"
-    // },
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "user"
+    },
     data:{
         type: mongoose.Schema.Types.ObjectId,
         required: true,

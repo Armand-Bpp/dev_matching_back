@@ -66,7 +66,7 @@ router.get('/', function (req, res) {
         .limit(limit)
         .exec(function (err, favorites) {
             console.log('GET /favorite err', err);
-            console.log('GET /favorites', favorites);
+            console.log('GET /favorites?????', favorites);
             if (err !== null) {
                 console.log('Error db find err:', err);
                 res.json({
@@ -88,9 +88,12 @@ router.get('/users/:id', function (req, res) {
     console.log('GET /favorites/:id req.query', req.query);
     console.log('GET /favorites/:id req.params', req.params);
 
-    favoriteModel.findById(req.params.id, function (err, favorites) {
-        console.log('GET /favorites/:id err', err);
-        console.log('GET /favorites/:id offers', favorites);
+    favoriteModel
+        .find({userId: req.params.id})
+        .populate('data')
+        .exec(function (err, favorites) {
+        console.log('GET /favorites?/:id err', err);
+        console.log('GET /favorites?/:id offers', favorites);
         if (err !== null) {
             console.log('Error db find err:', err);
             res.json({
@@ -101,7 +104,7 @@ router.get('/users/:id', function (req, res) {
         }
         res.json({
             success: true,
-            data: favorites
+            data: favorites || []
         });
     });
 });

@@ -25,7 +25,7 @@ router.post('/', function (req, res) {
         contract: req.body.contract || '',
         siret: req.body.siret || '',
         associationNumber: req.body.associationNumber || '',
-        skills: req.body.skills || '',
+        skills: req.body.skills || [],
         bio: req.body.bio || '',
         github: req.body.github || '',
         linkedin: req.body.linkedin || '',
@@ -70,6 +70,7 @@ router.get('/', function (req, res) {
     userModel
         .find({})
         .limit(limit)
+        .populate('skills')
         .exec(function (err, users) {
             console.log('GET /users err', err);
             console.log('GET /users users', users);
@@ -94,7 +95,10 @@ router.get('/:id', function (req, res) {
     console.log('GET /users/:id req.query', req.query);
     console.log('GET /users/:id req.params', req.params);
 
-    userModel.findById(req.params.id, function (err, user) {
+    userModel
+        .findById(req.params.id)
+        .populate('skills')
+        .exec(function (err, user) {
         console.log('GET /users/:id err', err);
         console.log('GET /users/:id users', user);
         if (err !== null) {
