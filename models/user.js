@@ -31,6 +31,12 @@ let schema = new mongoose.Schema({
 
     postalCode: String,
 
+    title: String,
+
+    picture: String,
+    
+    banner: String,
+
     contract: {
         type: String,
         index: true

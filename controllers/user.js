@@ -1,21 +1,47 @@
 var express = require('express');
 var router = express.Router(); // same as those 2 lines: var router = require('express').Router();
-
 var userModel = require('../models').user;
+const multer = require('multer');
+const upload = multer({ dest: 'public/uploads/'});
+const fs = require('fs');
 
 // CREATE
-router.post('/', function (req, res) {
+router.post('/', upload.single('picture'), function (req, res) {
     console.log('POST /users');
     console.log('POST /users req.body', req.body);
     console.log('POST /users req.query', req.query);
     console.log('POST /users req.params', req.params);
+    console.log('POST /users req.file', req.file);
+    const mimetypeMap = {
+        'image/gif': 'gif',
+        'image/jpeg': 'jpg',
+        'image/png': 'png',
+        'cv/pdf' : 'pdf'
+    };
+    const extension = mimetypeMap[req.file.mimetype];
+    // const filename = req.file.filename;
+    // console.log(filename, 'filename');
+    // const extension = req.file.mimetype;
+    const serverPicture = req.file.path + '.' + extension
+    console.log(serverPicture, 'serverpic');
+    const picture = serverPicture.replace('public', '');
+    console.log(req.file.path, 'reqfilepath');
+    const username = req.body.firstName
 
-    var user = new userModel({
+    fs.rename(req.file.path, 'public/uploads/' + username + '.' + extension , function (err) {
+        if (err !== null) {
+            console.log('Cannot rename');
+            return;
+        }
+
+    const user = new userModel({
         role: req.body.role || '',
         firstName: req.body.firstName || '',
         lastName: req.body.lastName || '',
         email: req.body.email || '',
-        picture: req.body.picture || '',
+        title: req.body.title || '',
+        picture: picture,
+        banner: req.body.banner,
         companyName: req.body.companyName || '',
         password: req.body.password || '',
         phoneNumber: req.body.phoneNumber || '',
@@ -47,6 +73,9 @@ router.post('/', function (req, res) {
             data: userDb
         });
     });
+    })
+    // upload
+
 });
 
 
