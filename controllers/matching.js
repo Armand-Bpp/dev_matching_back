@@ -70,31 +70,31 @@ router.get('/', function (req, res) {
 
 // });
 
-router.get('/offers', function(req, res){
-    console.log('GET /users/:id');
-    console.log('GET /users/:id req.body', req.body);
-    console.log('GET /users/:id req.query', req.query);
-    console.log('GET /users/:id req.params', req.params);
+// router.get('/offers/:userid', function(req, res){
+//     console.log('GET /users/:id');
+//     console.log('GET /users/:id req.body', req.body);
+//     console.log('GET /users/:id req.query', req.query);
+//     console.log('GET /users/:id req.params', req.params);
 
     
-    offerModel
-    .find({})
-    .populate('skills')
-    .exec(function(err,offer){
-        console.log('user',offer)
-        if (err !== null){
-            res.json({
-                success: false,
-                message: err.toString()
-            });
-            return;
-        }
-    res.json({
-        success: true,
-        data: offer
-    });
-})
-})
+//     offerModel
+//     .find({})
+//     .populate('skills')
+//     .exec(function(err,offer){
+//         console.log('user',offer)
+//         if (err !== null){
+//             res.json({
+//                 success: false,
+//                 message: err.toString()
+//             });
+//             return;
+//         }
+//     res.json({
+//         success: true,
+//         data: offer
+//     });
+// })
+// })
 
 router.get('/users/:id', function(req, res){
     console.log('GET /users/:id');
@@ -115,10 +115,24 @@ router.get('/users/:id', function(req, res){
             });
             return;
         }
-    res.json({
-        success: true,
-        data: user
-    });
+        offerModel
+        .find({})
+        .populate('skills')
+        .exec(function(err,offer){
+            console.log('user',offer)
+            if (err !== null){
+                res.json({
+                    success: false,
+                    message: err.toString()
+                });
+                return;
+            }
+        res.json({
+            success: true,
+            data: offer,
+            user
+        });
+    })
 })
 })
 
