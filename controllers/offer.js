@@ -79,7 +79,7 @@ router.get('/', function (req, res) {
         });
 });
 
-router.get('/:id', function (req, res) {
+router.get('/users/:id', function (req, res) {
     console.log('GET /offers/:id');
     console.log('GET /offers/:id req.body', req.body);
     console.log('GET /offers/:id req.query', req.query);
@@ -104,7 +104,7 @@ router.get('/:id', function (req, res) {
 });
 
 // UPDATE
-router.put('/:id', function (req, res) {
+router.put('users//:id', function (req, res) {
     console.log('PUT /offers/:id');
     console.log('PUT /offers/:id req.body', req.body);
     console.log('PUT /offers/:id req.query', req.query);

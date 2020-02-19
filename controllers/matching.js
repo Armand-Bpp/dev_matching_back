@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router(); // same as those 2 lines: var router = require('express').Router();
 
 const userModel = require('../models').user
-const offerModel = require('../models/offer')
+const offerModel = require('../models/offer');
 
 const matchingModel = require('../models').matching;
 
@@ -70,7 +70,7 @@ router.get('/', function (req, res) {
 
 // });
 
-router.get('/offers/:id', function(req, res){
+router.get('/offers', function(req, res){
     console.log('GET /users/:id');
     console.log('GET /users/:id req.body', req.body);
     console.log('GET /users/:id req.query', req.query);
@@ -78,7 +78,7 @@ router.get('/offers/:id', function(req, res){
 
     
     offerModel
-    .findById(req.params.id)
+    .find({})
     .populate('skills')
     .exec(function(err,offer){
         console.log('user',offer)
