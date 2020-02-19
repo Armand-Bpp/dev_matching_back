@@ -12,6 +12,7 @@ router.post('/', function (req, res) {
 
     var offer = new offerModel({
         position: req.body.position || '',
+        companyId: req.body.companyId || '',
         address: req.body.address || '',
         contract: req.body.contract || '',
         duration: req.body.duration || '',

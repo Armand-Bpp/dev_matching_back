@@ -10,6 +10,7 @@ var OfferController = controllers.offer;
 var FavoriteController = controllers.favorite;
 var SkillController = controllers.skill;
 var UserSkillController = controllers.userSkill;
+const MatchingController = controllers.matching
 
 
 mongoose.connect(
@@ -44,6 +45,7 @@ app.use('/offers', OfferController);
 app.use('/favorites', FavoriteController);
 app.use('/skills', SkillController);
 app.use('/userSkills', UserSkillController);
+app.use('/matching', MatchingController)
 
 app.use('*', function (req, res) {
     res.json({

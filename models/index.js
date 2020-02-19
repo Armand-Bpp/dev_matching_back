@@ -4,7 +4,8 @@ module.exports = {
     offer: require('./offer'),
     favorite: require('./favorite'),
     // usersSkil: require('./usersSkil')
-    userSkill: require('./userSkill')
+    userSkill: require('./userSkill'),
+    matching: require ('./matching')
     // favorite: require('./favorite')
 };
 
