@@ -4,9 +4,15 @@ let schema = new mongoose.Schema({
 
     // body: { type: String, required: true },
 
-    userId: {
+    matchId: {
+        type: String,
+        required: true,
+        enum: ["offer", "user"]
+    },
+    matchData: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "user"
+        refPath: "matchId"
+        
     },
     data:{
         type: mongoose.Schema.Types.ObjectId,

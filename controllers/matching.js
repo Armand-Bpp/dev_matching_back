@@ -3,6 +3,7 @@ var router = express.Router(); // same as those 2 lines: var router = require('e
 
 const userModel = require('../models').user
 const offerModel = require('../models/offer');
+const calculateScore = require('../matching/calculateScore')
 
 const matchingModel = require('../models').matching;
 
@@ -118,8 +119,8 @@ router.get('/users/:id', function(req, res){
         offerModel
         .find({})
         .populate('skills')
-        .exec(function(err,offer){
-            console.log('user',offer)
+        .exec(function(err,offers){
+            console.log('user',offers)
             if (err !== null){
                 res.json({
                     success: false,
@@ -127,13 +128,41 @@ router.get('/users/:id', function(req, res){
                 });
                 return;
             }
-        res.json({
-            success: true,
-            data: offer,
-            user
-        });
+            // calculateScore(offer, user)
+            var scores = offers.map((offer)=>{
+                const score = calculateScore(offer,user);
+                return {
+                    matchId:"user",
+                    matchData: req.params.id,
+                    data: offer._id,
+                    score:score,
+                    typeId:"offer"
+                }
+            })
+            console.log(scores,'scores');
+            
+            // console.log(calculate,'calculate')
+            matchingModel.create(scores, function(err, scoredb){
+                if (err !== null) {
+                    console.log('favorite save err', err);
+                    res.json({
+                        success: false,
+                        message: err.toString()
+                    });
+                    return;
+                }
+        
+            })
+            
+            res.json({
+                success: true,
+                data: offers,
+                user,
+            });
+            
+        })
     })
-})
+    
 })
 
 // router.get('/users/:id', function (req, res) {
