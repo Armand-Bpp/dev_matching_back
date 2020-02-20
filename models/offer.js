@@ -30,6 +30,12 @@ let schema = new mongoose.Schema({
 
     region: String,
 
+    skills : [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "skill",
+        index: true
+    }],
+
     experience: Number,
 
     description: String,

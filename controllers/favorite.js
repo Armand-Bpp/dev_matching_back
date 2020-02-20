@@ -94,6 +94,8 @@ router.get('/users/:id', function (req, res) {
         .exec(function (err, favorites) {
         console.log('GET /favorites?/:id err', err);
         console.log('GET /favorites?/:id offers', favorites);
+        console.log(req.params.id, 'paramsid');
+        
         if (err !== null) {
             console.log('Error db find err:', err);
             res.json({

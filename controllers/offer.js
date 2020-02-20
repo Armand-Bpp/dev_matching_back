@@ -79,7 +79,7 @@ router.get('/', function (req, res) {
         });
 });
 
-router.get('/:id', function (req, res) {
+router.get('/users/:id', function (req, res) {
     console.log('GET /offers/:id');
     console.log('GET /offers/:id req.body', req.body);
     console.log('GET /offers/:id req.query', req.query);
