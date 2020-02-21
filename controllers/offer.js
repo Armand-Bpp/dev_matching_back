@@ -23,6 +23,8 @@ router.post('/', function (req, res) {
         description: req.body.description || '',
         created: req.body.created || '',
         companyName: req.body.companyName || '',
+        skills: req.body.skills || '',
+        picture: req.body.picture || '',
     });
     offer.save(function (err, offerDb) {
         if (err !== null) {
@@ -85,9 +87,9 @@ router.get('/users/:id', function (req, res) {
     console.log('GET /offers/:id req.query', req.query);
     console.log('GET /offers/:id req.params', req.params);
 
-    offerModel.findById(req.params.id, function (err, offer) {
+    offerModel.findById(req.params.id, function (err, offers) {
         console.log('GET /offers/:id err', err);
-        console.log('GET /offers/:id offers', offer);
+        console.log('GET /offers/:id offers', offers);
         if (err !== null) {
             console.log('Error db find err:', err);
             res.json({
@@ -98,13 +100,13 @@ router.get('/users/:id', function (req, res) {
         }
         res.json({
             success: true,
-            data: offer
+            data: offers
         });
     });
 });
 
 // UPDATE
-router.put('/:id', function (req, res) {
+router.put('/users/:id', function (req, res) {
     console.log('PUT /offers/:id');
     console.log('PUT /offers/:id req.body', req.body);
     console.log('PUT /offers/:id req.query', req.query);
@@ -120,8 +122,8 @@ router.put('/:id', function (req, res) {
     }
 
     offerModel.updateOne(
-        { _id: req.params.id }, // query
-        { name: name }, // document
+        // { _id: req.params.id }, // query
+        // { name: name }, // document
         function (err, result) {
             if (err !== null) {
                 console.log('PUT /offers/:id Update error err', err);
@@ -140,7 +142,7 @@ router.put('/:id', function (req, res) {
 });
 
 // DELETE
-router.delete('/:id', function (req, res) {
+router.delete('/users/:id', function (req, res) {
     console.log('DELETE /offers/:id');
     console.log('DELETE /offers/:id req.body', req.body);
     console.log('DELETE /offers/:id req.query', req.query);

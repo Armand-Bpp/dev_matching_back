@@ -4,13 +4,16 @@ let schema = new mongoose.Schema({
     name: {
        type : String,
 
-    //    enum :  ["HTML",
     //     "CSS",
     //     "Sass",
     //     "Compass",
+
+
     //     "Less",
     //     "Stylus",
     //     "Boostrap",
+
+
     //     "Foundation",
     //     "Semantic UI",
     //     "React",

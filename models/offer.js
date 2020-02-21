@@ -9,6 +9,8 @@ let schema = new mongoose.Schema({
     },
     companyName: String,
 
+    picture: String,
+
     companyId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "user"

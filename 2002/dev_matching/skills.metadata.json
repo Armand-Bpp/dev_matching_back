@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"dev_matching.skills"},{"v":{"$numberInt":"2"},"key":{"name":{"$numberInt":"1"}},"name":"name_1","ns":"dev_matching.skills","background":true}],"uuid":"a6ecb78f5af54d20b9f8fbf48eb89a2f"}
